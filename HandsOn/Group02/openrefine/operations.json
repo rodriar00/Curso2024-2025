@@ -155,5 +155,24 @@
         "mode": "row-based"
       },
       "description": "Remove rows"
+    },
+    {
+      "op": "core/column-addition",
+      "engineConfig": {
+        "facets": [],
+        "mode": "record-based"
+      },
+      "baseColumnName": "Año",
+      "expression": "grel:\"ID-\" + cells[\"Mes\"].value[0] + cells[\"Hora Solicitud\"].value + \"-\" + rowIndex",
+      "onError": "set-to-blank",
+      "newColumnName": "ID",
+      "columnInsertIndex": 1,
+      "description": "Create column ID at index 1 based on column Año using expression grel:\"ID-\" + cells[\"Mes\"].value[0] + cells[\"Hora Solicitud\"].value + \"-\" + rowIndex"
+    },
+    {
+      "op": "core/column-move",
+      "columnName": "ID",
+      "index": 0,
+      "description": "Move column ID to position 0"
     }
   ]
