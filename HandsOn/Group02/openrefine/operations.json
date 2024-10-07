@@ -1,0 +1,159 @@
+[
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Hora Solicitud",
+      "expression": "grel:if(length(value) == 7, \"0\" + value, value)",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Hora Solicitud using expression grel:if(length(value) == 7, \"0\" + value, value)"
+    },
+    {
+      "op": "core/text-transform",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "columnName": "Hora Intervención",
+      "expression": "grel:if(length(value) == 7, \"0\" + value, value)",
+      "onError": "keep-original",
+      "repeat": false,
+      "repeatCount": 10,
+      "description": "Text transform on cells in column Hora Intervención using expression grel:if(length(value) == 7, \"0\" + value, value)"
+    },
+    {
+      "op": "core/row-removal",
+      "engineConfig": {
+        "facets": [
+          {
+            "type": "list",
+            "name": "Hora Solicitud",
+            "expression": "isBlank(value)",
+            "columnName": "Hora Solicitud",
+            "invert": false,
+            "omitBlank": false,
+            "omitError": false,
+            "selection": [
+              {
+                "v": {
+                  "v": true,
+                  "l": "true"
+                }
+              }
+            ],
+            "selectBlank": false,
+            "selectError": false
+          }
+        ],
+        "mode": "row-based"
+      },
+      "description": "Remove rows"
+    },
+    {
+      "op": "core/row-removal",
+      "engineConfig": {
+        "facets": [
+          {
+            "type": "list",
+            "name": "Hora Solicitud",
+            "expression": "isBlank(value)",
+            "columnName": "Hora Solicitud",
+            "invert": false,
+            "omitBlank": false,
+            "omitError": false,
+            "selection": [
+              {
+                "v": {
+                  "v": false,
+                  "l": "false"
+                }
+              }
+            ],
+            "selectBlank": false,
+            "selectError": false
+          },
+          {
+            "type": "list",
+            "name": "Hora Intervención",
+            "expression": "isBlank(value)",
+            "columnName": "Hora Intervención",
+            "invert": false,
+            "omitBlank": false,
+            "omitError": false,
+            "selection": [
+              {
+                "v": {
+                  "v": true,
+                  "l": "true"
+                }
+              }
+            ],
+            "selectBlank": false,
+            "selectError": false
+          }
+        ],
+        "mode": "row-based"
+      },
+      "description": "Remove rows"
+    },
+    {
+      "op": "core/row-removal",
+      "engineConfig": {
+        "facets": [
+          {
+            "type": "list",
+            "name": "Distrito",
+            "expression": "isBlank(value)",
+            "columnName": "Distrito",
+            "invert": false,
+            "omitBlank": false,
+            "omitError": false,
+            "selection": [
+              {
+                "v": {
+                  "v": true,
+                  "l": "true"
+                }
+              }
+            ],
+            "selectBlank": false,
+            "selectError": false
+          }
+        ],
+        "mode": "row-based"
+      },
+      "description": "Remove rows"
+    },
+    {
+      "op": "core/row-removal",
+      "engineConfig": {
+        "facets": [
+          {
+            "type": "list",
+            "name": "Código",
+            "expression": "isBlank(value)",
+            "columnName": "Código",
+            "invert": false,
+            "omitBlank": false,
+            "omitError": false,
+            "selection": [
+              {
+                "v": {
+                  "v": true,
+                  "l": "true"
+                }
+              }
+            ],
+            "selectBlank": false,
+            "selectError": false
+          }
+        ],
+        "mode": "row-based"
+      },
+      "description": "Remove rows"
+    }
+  ]
