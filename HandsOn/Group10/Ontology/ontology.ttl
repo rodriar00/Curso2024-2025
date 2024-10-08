@@ -1,5 +1,3 @@
-@prefix NOM_VIA: <http://www.owl-ontologies.com/NOM_VIA#> .
-@prefix NUM_VIA: <http://www.owl-ontologies.com/NUM_VIA#> .
 @prefix Parking: <https://smartcity.linkeddata.es/Grupo10/ontology/parkingbicismadrid#> .
 @prefix barrio: <http://www.owl-ontologies.com/barrio#> .
 @prefix cod_barrio: <http://www.owl-ontologies.com/cod_barrio#> .
@@ -25,11 +23,9 @@ Parking: a owl:Ontology ;
 
 <https://smartcity.linkeddata.es/Grupo10/ontology/parkingbicismadrid#Parking> a owl:DatatypeProperty ;
     rdfs:label "parking" ;
-    rdfs:range NOM_VIA:String,
-        NUM_VIA:int,
-        barrio:String,
-        cod_barrio:int,
-        cod_distrito:int,
+    rdfs:range barrio:String,
+        cod_barrio:Integer,
+        cod_distrito:Integer,
         distrito:String .
 
 Parking:Barrio a owl:Class ;
@@ -43,10 +39,6 @@ Parking:ID a owl:DatatypeProperty ;
 
 Parking:Parking a owl:Class ;
     rdfs:label "Parking" .
-
-Parking:TIPO_VIA a owl:DatatypeProperty ;
-    rdfs:label "t i p o_ v i a" ;
-    rdfs:range xsd:String .
 
 Parking:Via a owl:Class ;
     rdfs:label "Via" .
@@ -101,6 +93,15 @@ Parking:modelo a owl:DatatypeProperty ;
 Parking:ndp a owl:DatatypeProperty ;
     rdfs:label "ndp" .
 
+Parking:nom_via a owl:DatatypeProperty ;
+    rdfs:label "nom_via" .
+
+Parking:num_via a owl:DatatypeProperty ;
+    rdfs:label "num_via" .
+
 Parking:sistema_coord a owl:DatatypeProperty ;
     rdfs:label "sistema_coord" .
+
+Parking:tipo_via a owl:DatatypeProperty ;
+    rdfs:label "tipo_via" .
 
