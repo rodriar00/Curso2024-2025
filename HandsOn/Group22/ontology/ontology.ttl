@@ -19,40 +19,49 @@ acc:aNombreDe a owl:ObjectProperty ;
     rdfs:domain acc:Vehiculo ;
     rdfs:range acc:Involucrado .
 
-acc:alchool a owl:DatatypeProperty ;
-    rdfs:label "alchool" ;
+acc:alcohol a owl:DatatypeProperty ;
+    rdfs:label "alcohol" ;
+    rdfs:domain acc:Involucrado ;
     rdfs:range xsd:Boolean .
 
 acc:codDistrito a owl:DatatypeProperty ;
     rdfs:label "cod distrito" ;
+    rdfs:domain acc:Accidente ;
     rdfs:range xsd:String .
 
 acc:codigo a owl:DatatypeProperty ;
     rdfs:label "codigo" ;
+    rdfs:domain acc:Lesividad ;
     rdfs:range xsd:Integer .
 
 acc:coordX a owl:DatatypeProperty ;
     rdfs:label "coord x" ;
+    rdfs:domain acc:Accidente ;
     rdfs:range xsd:Float .
 
 acc:coordY a owl:DatatypeProperty ;
     rdfs:label "coord y" ;
+    rdfs:domain acc:Accidente ;
     rdfs:range xsd:Float .
 
 acc:distrito a owl:DatatypeProperty ;
     rdfs:label "distrito" ;
+    rdfs:domain acc:Accidente ;
     rdfs:range xsd:String .
 
 acc:drogas a owl:DatatypeProperty ;
     rdfs:label "drogas" ;
+    rdfs:domain acc:Involucrado ;
     rdfs:range xsd:Boolean .
 
 acc:estMeteorologica a owl:DatatypeProperty ;
     rdfs:label "est meteorologica" ;
+    rdfs:domain acc:Accidente ;
     rdfs:range xsd:String .
 
 acc:fecha a owl:DatatypeProperty ;
     rdfs:label "fecha" ;
+    rdfs:domain acc:Accidente ;
     rdfs:range xsd:Date .
 
 acc:formaParteDe a owl:ObjectProperty ;
@@ -61,26 +70,31 @@ acc:formaParteDe a owl:ObjectProperty ;
 
 acc:identificador a owl:DatatypeProperty ;
     rdfs:label "identificador" ;
+    rdfs:domain acc:Involucrado ;
     rdfs:range xsd:Integer .
 
 acc:lozalizacion a owl:DatatypeProperty ;
     rdfs:label "lozalizacion" ;
+    rdfs:domain acc:Accidente ;
     rdfs:range xsd:String .
 
 acc:nExpediente a owl:DatatypeProperty ;
     rdfs:label "n expediente" ;
+    rdfs:domain acc:Accidente ;
     rdfs:range xsd:String .
 
 acc:numero a owl:DatatypeProperty ;
     rdfs:label "numero" ;
     rdfs:range xsd:Integer .
 
-acc:rangeEdad a owl:DatatypeProperty ;
-    rdfs:label "range edad" ;
+acc:rangoEdad a owl:DatatypeProperty ;
+    rdfs:label "rango edad" ;
+    rdfs:domain acc:Involucrado ;
     rdfs:range xsd:String .
 
 acc:sexo a owl:DatatypeProperty ;
     rdfs:label "sexo" ;
+    rdfs:domain acc:Involucrado ;
     rdfs:range xsd:String .
 
 acc:tieneInvolucrados a owl:ObjectProperty ;
@@ -88,14 +102,17 @@ acc:tieneInvolucrados a owl:ObjectProperty ;
 
 acc:tipoAcc a owl:DatatypeProperty ;
     rdfs:label "tipo acc" ;
+    rdfs:domain acc:Accidente ;
     rdfs:range xsd:String .
 
 acc:tipoAsistencia a owl:DatatypeProperty ;
     rdfs:label "tipo asistencia" ;
+    rdfs:domain acc:Lesividad ;
     rdfs:range xsd:String .
 
 acc:tipoVehic a owl:DatatypeProperty ;
     rdfs:label "tipo vehic" ;
+    rdfs:domain acc:Vehiculo ;
     rdfs:range xsd:String .
 
 : a owl:Ontology ;
