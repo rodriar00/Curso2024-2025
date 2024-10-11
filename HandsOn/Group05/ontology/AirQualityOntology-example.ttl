@@ -1,17 +1,18 @@
 @prefix ns: <http://webcam.linkeddata.Gijon.es.org/ontology/airquality#> .
 @prefix est: <http://webcam.linkeddata.Gijon.es.org/resource/EstacionMedicion#> .
+@prefix med: <http://webcam.linkeddata.Gijon.es.org/resource/Medicion#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sc: <https://schema.org/> .
+@prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 est:estacion_12 a ns:EstacionMedicion ;
     ns:tieneID_Estacion 12 ;
     ns:tieneNombre "Estación móvil zona Portuarios" ;
-    sc:latitud 43.553280 ;
-    sc:longitud -5.702679 .
+    schema:latitud 43.553280 ;
+    schema:longitud -5.702679 .
 
-ns:medicion_12_1 a ns:Medicion ;
+med:medicion_12_1 a ns:Medicion ;
     ns:realizadaEn ns:estacion_12 ;
     ns:tieneFecha "2023-10-21"^^xsd:date ;
     ns:tieneHora 1 ;
@@ -29,7 +30,7 @@ ns:medicion_12_1 a ns:Medicion ;
     ns:tieneRS 42 ;
     ns:tieneLL 0 .
 
-ns:medicion_12_2 a ns:Medicion ;
+med:medicion_12_2 a ns:Medicion ;
     ns:realizadaEn ns:estacion_12 ;
     ns:tieneFecha "2023-10-21"^^xsd:date ;
     ns:tieneHora 2 ;

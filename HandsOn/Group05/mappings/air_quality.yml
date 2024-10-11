@@ -1,0 +1,47 @@
+prefixes:
+  rr: http://www.w3.org/ns/r2rml#
+  rml: http://semweb.mmlab.be/ns/rml#
+  ql: http://semweb.mmlab.be/ns/ql#
+  ns: http://webcam.linkeddata.Gijon.es.org/ontology/airquality#
+  schema: https://schema.org#
+  xsd: http://www.w3.org/2001/XMLSchema#
+
+mappings:
+  estacionMedicion:
+    sources:
+      - [csv/air_quality-updated.csv~csv]
+    s: http://webcam.linkeddata.Gijon.es.org/resource/EstacionMedicion$(tieneID_Estacion)
+    po:
+      - [a, ns:EstacionMedicion]
+      - [ns:tieneID_Estacion, $(ID_Estacion), xsd:decimal]
+      - [ns:tieneNombre, $(Nombre), xsd:string]
+      - [schema:latitud, $(latitud), xsd:decimal]
+      - [schema:longitud, $(longitud), xsd:decimal]
+
+  medicion:
+    sources:
+      - [csv/air_quality-updated.csv~csv]
+    s: http://webcam.linkeddata.Gijon.es.org/resource/Medicion/$(tieneID_Estacion)/$(Fecha)/$(Hora)
+    po:
+      - [a, ns:Medicion]
+      - [ns:tieneFecha, $(Fecha), xsd:date]
+      - [ns:tieneHora, $(Hora), xsd:decimal]
+      - [ns:tieneSO2, $(SO2), xsd:decimal]
+      - [ns:tieneH2S, $(H2S), xsd:decimal]
+      - [ns:tieneNO, $(NO), xsd:decimal]
+      - [ns:tieneNO2, $(NO2), xsd:decimal]
+      - [ns:tieneNOX, $(NOX), xsd:decimal]
+      - [ns:tieneO3, $(O3), xsd:decimal]
+      - [ns:tienePM10, $(PM10), xsd:decimal]
+      - [ns:tienePM25, $(PM25), xsd:decimal]
+      - [ns:tieneBEN, $(BEN), xsd:decimal]
+      - [ns:tieneTOL, $(TOL), xsd:decimal]
+      - [ns:tieneMXIL, $(MXIL), xsd:decimal]
+      - [ns:tieneDireccionViento, $(Direccion Viento), xsd:decimal]
+      - [ns:tieneVelocidadViento, $(Velocidad Viento), xsd:decimal]
+      - [ns:tieneTemperatura, $(Temperatura), xsd:decimal]
+      - [ns:tieneHR, $(HR), xsd:decimal]
+      - [ns:tienePRB, $(PRB), xsd:decimal]
+      - [ns:tieneRS, $(RS), xsd:decimal]
+      - [ns:tieneLL, $(LL), xsd:decimal]
+      - [ns:realizadaEn, $(ID_Estacion), http://webcam.linkeddata.Gijon.es.org/resource/EstacionMedicion$(tieneID_Estacion)]
