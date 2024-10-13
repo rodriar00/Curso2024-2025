@@ -12,18 +12,18 @@
         rml:referenceFormulation ql:CSV
     ] ;
     rr:subjectMap [
-        rr:template "http://webcam.linkeddata.Gijon.es.org/resource/{tieneID_Estacion}" ;
+        rr:template "http://webcam.linkeddata.Gijon.es.org/resource/{ID_Estacion}" ;
         rr:class ns:EstacionMedicion
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneID_Estacion ;
+        rr:predicate ns:ID_Estacion ;
         rr:objectMap [ 
             rml:reference "ID_Estacion";
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneNombre ;
+        rr:predicate ns:Nombre ;
         rr:objectMap [ 
             rml:reference "Nombre";
             rr:datatype xsd:string 
@@ -51,147 +51,153 @@
         rml:referenceFormulation ql:CSV
     ] ;
     rr:subjectMap [
-        rr:template "http://webcam.linkeddata.Gijon.es.org/resource/Medicion/{tieneID_Estacion}/{Fecha}/{Hora}" ;
+        rr:template "http://webcam.linkeddata.Gijon.es.org/resource/Medicion/{ID_Estacion}/{Fecha}/{Hora}" ;
         rr:class ns:Medicion
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneFecha ;
+        rr:predicate ns:Fecha ;
         rr:objectMap [ 
             rml:reference "Fecha";
             rr:datatype xsd:date 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneHora ;
+        rr:predicate ns:Hora ;
         rr:objectMap [ 
             rml:reference "Hora";
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneSO2 ;
+        rr:predicate ns:SO2 ;
         rr:objectMap [ 
             rml:reference "SO2";
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneH2S ;
+        rr:predicate ns:H2S ;
         rr:objectMap [ 
             rml:reference "H2S"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneNO ;
+        rr:predicate ns:NO ;
         rr:objectMap [ 
             rml:reference "NO"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneNO2 ;
+        rr:predicate ns:NO2 ;
         rr:objectMap [ 
             rml:reference "NO2"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneNOX ;
+        rr:predicate ns:NOX ;
         rr:objectMap [ 
             rml:reference "NOX"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneO3 ;
+        rr:predicate ns:O3 ;
         rr:objectMap [ 
             rml:reference "O3"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tienePM10 ;
+        rr:predicate ns:PM10 ;
         rr:objectMap [ 
             rml:reference "PM10"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tienePM25 ;
+        rr:predicate ns:PM25 ;
         rr:objectMap [ 
             rml:reference "PM25"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneBEN ;
+        rr:predicate ns:BEN ;
         rr:objectMap [ 
             rml:reference "BEN"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneTOL ;
+        rr:predicate ns:TOL ;
         rr:objectMap [ 
             rml:reference "TOL"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneMXIL ;
+        rr:predicate ns:MXIL ;
         rr:objectMap [ 
             rml:reference "MXIL"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneDireccionViento ;
+        rr:predicate ns:DireccionViento ;
         rr:objectMap [ 
             rml:reference "Direccion Viento"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneVelocidadViento ;
+        rr:predicate ns:VelocidadViento ;
         rr:objectMap [ 
             rml:reference "Velocidad Viento"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneTemperatura ;
+        rr:predicate ns:Temperatura ;
         rr:objectMap [ 
             rml:reference "Temperatura"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneHR ;
+        rr:predicate ns:HR ;
         rr:objectMap [ 
             rml:reference "HR"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tienePRB ;
+        rr:predicate ns:PRB ;
         rr:objectMap [ 
             rml:reference "PRB"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneRS ;
+        rr:predicate ns:RS ;
         rr:objectMap [ 
             rml:reference "RS"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ns:tieneLL ;
+        rr:predicate ns:LL ;
         rr:objectMap [ 
             rml:reference "LL"; 
             rr:datatype xsd:decimal 
             ]
     ] ;
+    rr:predicateObjectMap [
+    rr:predicate ns:realizadaEn;
+    rr:objectMap [
+      rr:parentTriplesMap <#TriplesMap_EstacionMedicion>
+    ]       
+    ] .
    

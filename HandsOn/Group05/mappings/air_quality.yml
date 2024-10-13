@@ -10,38 +10,38 @@ mappings:
   estacionMedicion:
     sources:
       - [csv/air_quality-updated.csv~csv]
-    s: http://webcam.linkeddata.Gijon.es.org/resource/EstacionMedicion$(tieneID_Estacion)
+    s: http://webcam.linkeddata.Gijon.es.org/resource/EstacionMedicion$(ID_Estacion)
     po:
       - [a, ns:EstacionMedicion]
-      - [ns:tieneID_Estacion, $(ID_Estacion), xsd:decimal]
-      - [ns:tieneNombre, $(Nombre), xsd:string]
+      - [ns:ID_Estacion, $(ID_Estacion), xsd:decimal]
+      - [ns:Nombre, $(Nombre), xsd:string]
       - [schema:latitud, $(latitud), xsd:decimal]
       - [schema:longitud, $(longitud), xsd:decimal]
 
   medicion:
     sources:
       - [csv/air_quality-updated.csv~csv]
-    s: http://webcam.linkeddata.Gijon.es.org/resource/Medicion/$(tieneID_Estacion)/$(Fecha)/$(Hora)
+    s: http://webcam.linkeddata.Gijon.es.org/resource/Medicion/$(ID_Estacion)/$(Fecha)/$(Hora)
     po:
       - [a, ns:Medicion]
-      - [ns:tieneFecha, $(Fecha), xsd:date]
-      - [ns:tieneHora, $(Hora), xsd:decimal]
-      - [ns:tieneSO2, $(SO2), xsd:decimal]
-      - [ns:tieneH2S, $(H2S), xsd:decimal]
-      - [ns:tieneNO, $(NO), xsd:decimal]
-      - [ns:tieneNO2, $(NO2), xsd:decimal]
-      - [ns:tieneNOX, $(NOX), xsd:decimal]
-      - [ns:tieneO3, $(O3), xsd:decimal]
-      - [ns:tienePM10, $(PM10), xsd:decimal]
-      - [ns:tienePM25, $(PM25), xsd:decimal]
-      - [ns:tieneBEN, $(BEN), xsd:decimal]
-      - [ns:tieneTOL, $(TOL), xsd:decimal]
-      - [ns:tieneMXIL, $(MXIL), xsd:decimal]
-      - [ns:tieneDireccionViento, $(Direccion Viento), xsd:decimal]
-      - [ns:tieneVelocidadViento, $(Velocidad Viento), xsd:decimal]
-      - [ns:tieneTemperatura, $(Temperatura), xsd:decimal]
-      - [ns:tieneHR, $(HR), xsd:decimal]
-      - [ns:tienePRB, $(PRB), xsd:decimal]
-      - [ns:tieneRS, $(RS), xsd:decimal]
-      - [ns:tieneLL, $(LL), xsd:decimal]
-      - [ns:realizadaEn, $(ID_Estacion), http://webcam.linkeddata.Gijon.es.org/resource/EstacionMedicion$(tieneID_Estacion)]
+      - [ns:Fecha, $(Fecha), xsd:date]
+      - [ns:Hora, $(Hora), xsd:decimal]
+      - [ns:SO2, $(SO2), xsd:decimal]
+      - [ns:H2S, $(H2S), xsd:decimal]
+      - [ns:NO, $(NO), xsd:decimal]
+      - [ns:NO2, $(NO2), xsd:decimal]
+      - [ns:NOX, $(NOX), xsd:decimal]
+      - [ns:O3, $(O3), xsd:decimal]
+      - [ns:PM10, $(PM10), xsd:decimal]
+      - [ns:PM25, $(PM25), xsd:decimal]
+      - [ns:BEN, $(BEN), xsd:decimal]
+      - [ns:TOL, $(TOL), xsd:decimal]
+      - [ns:MXIL, $(MXIL), xsd:decimal]
+      - [ns:DireccionViento, $(Direccion Viento), xsd:decimal]
+      - [ns:VelocidadViento, $(Velocidad Viento), xsd:decimal]
+      - [ns:Temperatura, $(Temperatura), xsd:decimal]
+      - [ns:HR, $(HR), xsd:decimal]
+      - [ns:PRB, $(PRB), xsd:decimal]
+      - [ns:RS, $(RS), xsd:decimal]
+      - [ns:LL, $(LL), xsd:decimal]
+      - [ns:realizadaEn, $(ID_Estacion), http://webcam.linkeddata.Gijon.es.org/resource/EstacionMedicion$(ID_Estacion)]

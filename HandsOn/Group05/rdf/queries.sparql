@@ -1,0 +1,74 @@
+PREFIX ns1: <http://webcam.linkeddata.Gijon.es.org/ontology/airquality#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX schema: <https://schema.org/>
+
+
+# Query 1: Retrieve all stations (EstacionMedicion)
+SELECT ?station ?name ?lat ?long WHERE {
+  ?station a ns1:EstacionMedicion ;
+           ns1:Nombre ?name ;
+           schema:latitud ?lat ;
+           schema:longitud ?long .
+} LIMIT 100
+
+# Query 2: Retrieve all measurements (Medicion) with their respective properties
+SELECT ?measurement ?date ?hour ?H2S ?NO2 ?O3 ?SO2 ?VelocidadViento WHERE {
+  ?measurement a ns1:Medicion ;
+               ns1:Fecha ?date ;
+               ns1:Hora ?hour ;
+               ns1:H2S ?H2S ;
+               ns1:NO2 ?NO2 ;
+               ns1:O3 ?O3 ;
+               ns1:SO2 ?SO2 ;
+               ns1:VelocidadViento ?VelocidadViento .
+} LIMIT 100
+
+# Query 3: Retrieve all measurements for a specific station (ID_Estacion = 12)
+SELECT ?measurement ?date ?hour ?H2S ?NO2 ?O3 ?SO2 ?VelocidadViento WHERE {
+  ?measurement a ns1:Medicion ;
+               ns1:Fecha ?date ;
+               ns1:Hora ?hour ;
+               ns1:H2S ?H2S ;
+               ns1:NO2 ?NO2 ;
+               ns1:O3 ?O3 ;
+               ns1:SO2 ?SO2 ;
+               ns1:VelocidadViento ?VelocidadViento ;
+               ns1:realizadaEn <http://webcam.linkeddata.Gijon.es.org/resource/12> .
+} LIMIT 100
+
+# Query 4: Retrieve measurements with a specific property (e.g., H2S > 2)
+SELECT ?measurement ?date ?hour ?H2S WHERE {
+  ?measurement a ns1:Medicion ;
+               ns1:Fecha ?date ;
+               ns1:Hora ?hour ;
+               ns1:H2S ?H2S .
+  FILTER (?H2S > 2)
+} LIMIT 100
+
+# Query 5: Retrieve measurements for a given date (e.g., 2023-10-21)
+SELECT ?measurement ?hour ?H2S ?NO2 ?O3 WHERE {
+  ?measurement a ns1:Medicion ;
+               ns1:Fecha "2023-10-21"^^xsd:date ;
+               ns1:Hora ?hour ;
+               ns1:H2S ?H2S ;
+               ns1:NO2 ?NO2 ;
+               ns1:O3 ?O3 .
+} LIMIT 100
+
+# Query 6: Retrieve the average temperature (Temperatura) for all measurements on a specific date (2023-12-31)
+SELECT (AVG(?Temperatura) AS ?avgTemp) WHERE {
+  ?measurement a ns1:Medicion ;
+               ns1:Fecha "2023-12-31"^^xsd:date ;
+               ns1:Temperatura ?Temperatura .
+} LIMIT 100
+
+# Query 7: Retrieve all measurements where the wind speed (VelocidadViento) is higher than 2
+SELECT ?measurement ?date ?hour ?VelocidadViento WHERE {
+  ?measurement a ns1:Medicion ;
+               ns1:Fecha ?date ;
+               ns1:Hora ?hour ;
+               ns1:VelocidadViento ?VelocidadViento .
+  FILTER (?VelocidadViento > 2)
+} LIMIT 100
+
+
