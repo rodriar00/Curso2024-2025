@@ -10,24 +10,37 @@ prefixes:
   ql: http://semweb.mmlab.be/ns/ql#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   vocab: http://example.org#
-  
+  rr: http://www.w3.org/ns/r2rml#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  samur: http://samur.linkeddata.madrid.es/ontology#
+
 mappings:
   triplesmap1:
     sources:
-      - [pathToData.csv~csv]
-    s: http://subjectUri/$(columnReference)
+      - [../csv/activaciones_samur_2023-updated.csv]
+    s: http://samur.linkeddata.madrid.es/activation/$(ID)
     po:
-      - [a, vocab:MyClass]
-      - [vocab:property1,$(column)]
-      - [vocab:property2,$(uri-column)~iri]
-      - [vocab:property3,$(integer-column),xsd:integer]
-      - p: vocab:relation
-        o:
-          mapping: triplesmap2
+      - [a, samur:Activation]
+      - [samur:hasYear, $(Año), xsd:gYear]
+      - [samur:hasMonth, $(Mes), xsd:string]
+      - [samur:hasRequestTime, $(Hora Solicitud), xsd:time]
+      - [samur:hasInterventionTime, $(Hora Intervención), xsd:time]
+      - [samur:hasEmergencyType, $(Código), xsd:string]
+      - [samur:hasDistrict, http://samur.linkeddata.madrid.es/location/$(Distrito)~iri]
+      - [samur:hasHospital, http://samur.linkeddata.madrid.es/hospital/$(Hospital)~iri]
 
   triplesmap2:
     sources:
-      - [pathToData.csv~csv]
-    s: $(uri-column)
+      - [../csv/activaciones_samur_2023-updated.csv]
+    s: http://samur.linkeddata.madrid.es/location/$(Distrito)
     po:
-      - [a, vocab:MyClass2]
+      - [a, samur:Location]
+      - [samur:hasDistrictName, $(Distrito), xsd:string]
+
+  triplesmap3:
+    sources:
+      - [../csv/activaciones_samur_2023-updated.csv]
+    s: http://samur.linkeddata.madrid.es/hospital/$(Hospital)
+    po:
+      - [a, samur:Hospital]
+      - [samur:hasHospitalName, $(Hospital), xsd:string]
