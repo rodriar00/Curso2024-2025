@@ -9,9 +9,6 @@ prefixes:
   rml: http://semweb.mmlab.be/ns/rml#
   ql: http://semweb.mmlab.be/ns/ql#
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-  vocab: http://example.org#
-  rr: http://www.w3.org/ns/r2rml#
-  xsd: http://www.w3.org/2001/XMLSchema#
   samur: http://samur.linkeddata.madrid.es/ontology#
 
 mappings:
