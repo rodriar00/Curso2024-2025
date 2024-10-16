@@ -5,15 +5,15 @@
 **Every RDF file:**
 
 - [ ] Uses the .nt extension
-- [ ] Is serialized in the NTriples format
-- [ ] Follows the resource naming strategy
-- [ ] Uses class and property URIs that are the same as those used in the ontology
+- [x] Is serialized in the NTriples format
+- [x] Follows the resource naming strategy
+- [x] Uses class and property URIs that are the same as those used in the ontology
 
 **Every URI in the RDF files:**
 
-- [ ] Is "readable" and has some meaning (e.g., it is not an auto-increased integer) 
-- [ ] Is not encoded as a string
-- [ ] Does not contain a double slash (i.e., “//”)
+- [x] Is "readable" and has some meaning (e.g., it is not an auto-increased integer) 
+- [x] Is not encoded as a string
+- [x] Does not contain a double slash (i.e., “//”)
 
 **Every individual in the RDF files:**
 
@@ -25,6 +25,7 @@
 - [ ] Is trimmed
 - [ ] Is properly encoded (e.g., dates, booleans)
 - [ ] Includes its datatype
-- [ ] Uses the correct datatype (e.g., values of 0-1 may be booleans and not integers, not every string made of numbers is a number)
+- [x] Uses the correct datatype (e.g., values of 0-1 may be booleans and not integers, not every string made of numbers is a number)
 
 ## Comments on the self-assessment
+We had some issues uploading "/rdf/output.ttl" file as our dataset is large and the production int RDF was, thus, large. 
