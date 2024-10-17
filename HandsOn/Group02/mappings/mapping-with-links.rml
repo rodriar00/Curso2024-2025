@@ -3,6 +3,7 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix samur: <http://samur.linkeddata.madrid.es/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 
 <#TriplesMap1> a rr:TriplesMap;
   rml:logicalSource [
@@ -57,13 +58,29 @@
   rr:predicateObjectMap [
     rr:predicate samur:hasDistrict;
     rr:objectMap [
-      rml:reference "district_wikidata_id";
+      rr:template "http://samur.linkeddata.madrid.es/location/{Distrito}";
       rr:termType rr:IRI
     ]
   ];
 
   rr:predicateObjectMap [
+    rr:predicate owl:sameAs;
+    rr:objectMap [
+      rml:reference "district_wikidata_id";
+      rr:termType rr:IRI
+    ]
+  ].
+
+  rr:predicateObjectMap [
     rr:predicate samur:hasHospital;
+    rr:objectMap [
+      rr:template "http://samur.linkeddata.madrid.es/hospital/{Hospital}";
+      rr:termType rr:IRI
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate owl:sameAs;  # Añadimos owl:sameAs para el hospital
     rr:objectMap [
       rml:reference "hospital_wikidata_id";
       rr:termType rr:IRI
@@ -103,5 +120,13 @@
     rr:objectMap [
       rml:reference "Hospital";
       rr:datatype xsd:string
+    ]
+  ].
+
+  rr:predicateObjectMap [
+    rr:predicate owl:sameAs;  # Añadimos owl:sameAs para vincular el hospital con Wikidata
+    rr:objectMap [
+      rml:reference "hospital_wikidata_id";
+      rr:termType rr:IRI
     ]
   ].
