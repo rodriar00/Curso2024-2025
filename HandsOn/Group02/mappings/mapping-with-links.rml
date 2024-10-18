@@ -5,7 +5,7 @@
 @prefix samur: <http://samur.linkeddata.madrid.es/ontology#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 
-<#TriplesMap1> a rr:TriplesMap;
+<http://samur.linkeddata.madrid.es/TriplesMap1> a rr:TriplesMap;
   rml:logicalSource [
     rml:source "../csv/activaciones_samur_2023-updated-with-links.csv";
     rml:referenceFormulation ql:CSV
@@ -69,7 +69,7 @@
       rml:reference "district_wikidata_id";
       rr:termType rr:IRI
     ]
-  ].
+  ];
 
   rr:predicateObjectMap [
     rr:predicate samur:hasHospital;
@@ -87,7 +87,7 @@
     ]
   ].
 
-<#TriplesMap2> a rr:TriplesMap;
+<http://samur.linkeddata.madrid.es/TriplesMap2> a rr:TriplesMap;
   rml:logicalSource [
     rml:source "../csv/activaciones_samur_2023-updated-with-links.csv";
     rml:referenceFormulation ql:CSV
@@ -105,7 +105,7 @@
     ]
   ].
 
-<#TriplesMap3> a rr:TriplesMap;
+<http://samur.linkeddata.madrid.es/TriplesMap3> a rr:TriplesMap;
   rml:logicalSource [
     rml:source "../csv/activaciones_samur_2023-updated-with-links.csv";
     rml:referenceFormulation ql:CSV
@@ -121,7 +121,7 @@
       rml:reference "Hospital";
       rr:datatype xsd:string
     ]
-  ].
+  ];
 
   rr:predicateObjectMap [
     rr:predicate owl:sameAs;  # Añadimos owl:sameAs para vincular el hospital con Wikidata
