@@ -28,12 +28,6 @@ ns:tieneDistrito rdf:type owl:ObjectProperty ;
     rdfs:range ns:Distrito ;
     rdfs:label "Distrito de concesion" .
 
-
-ns:tieneSubepigrafe rdf:type owl:DatatypeProperty ;
-    rdfs:domain ns:Concesion ;
-    rdfs:range xsd:string ;
-    rdfs:label "Subepigrafe de concesion" .
-
 ns:tieneApartado rdf:type owl:ObjectProperty ;
     rdfs:domain ns:Concesion ;
     rdfs:range ns:Apartado ;
