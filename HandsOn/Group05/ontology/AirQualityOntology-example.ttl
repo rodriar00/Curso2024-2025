@@ -1,49 +1,36 @@
+@prefix mod: <https://w3id.org/mod#> .
 @prefix ns: <http://webcam.linkeddata.Gijon.es.org/ontology/airquality#> .
-@prefix est: <http://webcam.linkeddata.Gijon.es.org/resource/EstacionMedicion#> .
-@prefix med: <http://webcam.linkeddata.Gijon.es.org/resource/Medicion#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-est:estacion_12 a ns:EstacionMedicion ;
-    ns:ID_Estacion 12 ;
-    ns:Nombre "Estación móvil zona Portuarios" ;
-    schema:latitud 43.553280 ;
-    schema:longitud -5.702679 .
+ns:AirQualityOntology a owl:Ontology ;
+    mod:createdWith <https://chowlk.linkeddata.es/> .
 
-med:medicion_12_1 a ns:Medicion ;
-    ns:realizadaEn ns:estacion_12 ;
-    ns:Fecha "2023-10-21"^^xsd:date ;
-    ns:Hora 1 ;
-    ns:SO2 3.0 ;
-    ns:H2S 3.0 ;
-    ns:NO 1.0 ;
-    ns:NO2 2.0 ;
-    ns:NOX 2.0 ;
-    ns:O3 72.0 ;
-    ns:DireccionViento 161 ;
-    ns:VelocidadViento 1.34 ;
-    ns:Temperatura 12.8 ;
-    ns:HR 78 ;
-    ns:PRB 1000 ;
-    ns:RS 42 ;
-    ns:LL 0 .
+ns:Estacion_12 a ns:EstacionMedicion ;
+    schema:name "Estación móvil zona Portuarios" ;
+    schema:latitude "43.55328"^^xsd:Decimal ;
+    schema:longitude "-5.702679"^^xsd:Decimal .
 
-med:medicion_12_2 a ns:Medicion ;
-    ns:realizadaEn ns:estacion_12 ;
-    ns:Fecha "2023-10-21"^^xsd:date ;
-    ns:Hora 2 ;
-    ns:SO2 3.0 ;
-    ns:H2S 3.0 ;
-    ns:NO 1.0 ;
-    ns:NO2 2.0 ;
-    ns:NOX 2.0 ;
-    ns:O3 72.0 ;
-    ns:DireccionViento 162 ;
-    ns:VelocidadViento 1.17 ;
-    ns:Temperatura 12.8 ;
-    ns:HR 76 ;
-    ns:PRB 1001 ;
-    ns:RS 41 ;
-    ns:LL 0 .
+ns:Medicion_01 a ns:MedicionSO2 ;
+    ns:FechaMedida "2023-10-21"^^xsd:date ;
+    ns:HoraMedida "01:00:00"^^xsd:time ;
+    ns:UnidadMedida "3"^^xsd:Decimal ;
+    sosa:madeBySensor ns:Estacion_12 ;
+    sosa:hasFeatureOfInterest ns:SO2 .
+
+ns:Medicion_02 a ns:MedicionTemperatura ;
+    ns:FechaMedida "2023-10-21"^^xsd:date ;
+    ns:HoraMedida "01:00:00"^^xsd:time ;
+    ns:UnidadMedida "12.8"^^xsd:Decimal ;
+    sosa:madeBySensor ns:Estacion_12 ;
+    sosa:hasFeatureOfInterest ns:Temperatura .
+
+ns:Medicion_03 a ns:MedicionHR ;
+    ns:FechaMedida "2023-10-21"^^xsd:date ;
+    ns:HoraMedida "01:00:00"^^xsd:time ;
+    ns:UnidadMedida "78"^^xsd:Decimal ;
+    sosa:madeBySensor ns:Estacion_12 ;
+    sosa:hasFeatureOfInterest ns:HR .
