@@ -10,7 +10,7 @@
 | Name                          | GitHub Username  |
 |-------------------------------|------------------|
 | Gonzalo Pernas Casado         | Tooaad           |
-| Iñigo Rodriguez Saito         | i-saito33        |
+| Iñigo Rodriguez Saito         | i-saito11        |
 | Raquel Falero Dominguez       | Raaquel09        |
 
 
@@ -28,7 +28,7 @@ in the selected datasets
 
 
 **The "applicationRequirements.html tile:**
-- [?] Includes a description of the application user interface
+- [x] Includes a description of the application user interface
 
 ## Comments on self-assessment##
 > **Note:** We are still looking for one last member.
