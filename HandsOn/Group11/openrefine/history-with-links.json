@@ -1,0 +1,15 @@
+[
+    {
+      "op": "core/column-addition",
+      "engineConfig": {
+        "facets": [],
+        "mode": "row-based"
+      },
+      "baseColumnName": "PUNTO_MUESTREO",
+      "expression": "grel:value.substring(0,8)",
+      "onError": "set-to-blank",
+      "newColumnName": "SAME_AS_CODIGO",
+      "columnInsertIndex": 8,
+      "description": "Create column SAME_AS_CODIGO at index 8 based on column PUNTO_MUESTREO using expression grel:value.substring(0,8)"
+    }
+]
