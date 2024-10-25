@@ -700,5 +700,25 @@
       }
     ],
     "description": "Mass edit cells in column same_as_wikidata_tipo_vehiculo"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "same_as_wikidata_tipo_vehiculo",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Sin especificar"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "NULL"
+      }
+    ],
+    "description": "Mass edit cells in column same_as_wikidata_tipo_vehiculo"
   }
 ]
