@@ -107,10 +107,6 @@
     rml:source "../csv/activaciones_samur_2023-updated-with-links.csv";
     rml:referenceFormulation ql:CSV
   ];
-  rr:subjectMap [
-    rml:reference "hospital_wikidata_id";
-    rr:class samur:Hospital
-  ];
 
   rr:subjectMap [
         rr:template "http://samur.linkeddata.madrid.es/hospital/{Hospital}";
