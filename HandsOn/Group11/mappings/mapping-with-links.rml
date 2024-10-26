@@ -1,0 +1,356 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix vocab: <http://semanticweb.es/airquality#> .
+@prefix wd: <http://wikidata.org/entity/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<#TriplesMap1> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "horario.csv" ;
+        rml:referenceFormulation ql:CSV 
+    ] ;
+    rr:subjectMap [
+        rr:template "http://semanticweb.es/airquality/estacion/{ESTACION}" ;
+        rr:class vocab:Estacion 
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate vocab:codigoEstacion ;
+        rml:reference "ESTACION" ;
+        rr:datatype xsd:integer
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:codigoProvincia ;
+        rml:reference "PROVINCIA" ;
+        rr:datatype xsd:integer
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:codigoMunicipio ;
+        rml:reference "MUNICIPIO" ;
+        rr:datatype xsd:integer
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:codigoMagnitud ;
+        rml:reference "MAGNITUD" ;
+        rr:datatype xsd:integer
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate wd:same_as_wikidata_madrid ;
+        rr:objectMap [ rml:reference "same_as_wikidata_madrid" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate wd:same_as_wikidata_madrid_landmarks ;
+        rr:objectMap [ rml:reference "same_as_wikidata_madrid_landmarks" ]
+    ] .
+
+<#TriplesMap2> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "horario.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+    rr:subjectMap [
+        rr:template "http://semanticweb.es/airquality/puntoMuestreo/{PUNTO_MUESTREO}" ;
+        rr:class vocab:PuntoMuestreo
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate vocab:codigoPuntoMuestreo ;
+        rml:reference "PUNTO_MUESTREO" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneMedicion ;
+        rr:objectMap [
+            rr:parentTriplesMap <#TriplesMap3>
+        ]
+    ] .
+
+<#TriplesMap3> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "horario.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+    rr:subjectMap [
+        rr:template "http://semanticweb.es/airquality/medicion/{PUNTO_MUESTREO}/{ANO}/{MES}/{DIA}" ;
+        rr:class vocab:Medicion
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneAno ;
+        rml:reference "ANO" ;
+        rr:datatype xsd:integer
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneMes ;
+        rml:reference "MES" ;
+        rr:datatype xsd:integer
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneDia ;
+        rml:reference "DIA" ;
+        rr:datatype xsd:integer
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H01" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H02" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H03" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H04" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H05" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H06" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H07" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H08" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H09" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H10" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H11" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H12" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H13" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H14" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H15" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H16" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H17" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H18" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H19" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H20" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H21" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H22" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H23" ;
+        rr:datatype xsd:decimal
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneValor ;
+        rml:reference "H24" ;
+        rr:datatype xsd:decimal
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V01" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V02" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V03" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V04" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V05" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V06" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V07" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V08" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V09" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V10" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V11" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V12" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V13" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V14" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V15" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V16" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V17" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V18" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V19" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V20" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V21" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V22" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V23" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstado ;
+        rml:reference "V24" ;
+        rr:datatype xsd:string
+    ] .
+
+<#TriplesMap4> a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "horario.csv" ;
+        rml:referenceFormulation ql:CSV
+    ] ;
+    rr:subjectMap [
+        rr:template "http://semanticweb.es/airquality/municipio/{MUNICIPIO}" ;
+        rr:class vocab:Municipio
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:nombreMunicipio ;
+        rml:reference "NOMBRE_MUNICIPIO" ;
+        rr:datatype xsd:string
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate vocab:tieneEstacion ;
+        rr:objectMap [
+            rr:template "http://semanticweb.es/airquality/estacion/{ESTACION}"
+        ]
+    ] .
