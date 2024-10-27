@@ -1,2 +1,15 @@
-# TODO
-# A SPARQL file with queries to verify your links (“queries-with-links.sparql” under an “rdf” directory).
+PREFIX vocab: <http://semanticweb.es/airquality#>
+
+#Retrieve all the different PuntoMuestreo
+SELECT DISTINCT ?puntoMuestreo
+WHERE {
+    ?puntoMuestreo a vocab:PuntoMuestreo .
+}
+
+#Retrieve all the Estacion of each Municipio
+SELECT DISTINCT ?municipio ?estacion
+WHERE {
+  ?municipio a vocab:Municipio .
+  ?municipio vocab:tieneEstacion ?estacion .
+}
+

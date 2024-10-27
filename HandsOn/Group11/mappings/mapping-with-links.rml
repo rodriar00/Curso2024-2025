@@ -7,7 +7,7 @@
 
 <#TriplesMap1> a rr:TriplesMap ;
     rml:logicalSource [
-        rml:source "horario.csv" ;
+        rml:source "horario-csv-updated-with-links.csv" ;
         rml:referenceFormulation ql:CSV 
     ] ;
     rr:subjectMap [
@@ -31,22 +31,24 @@
         rr:datatype xsd:integer
     ] ;
     rr:predicateObjectMap [
+        rr:predicate vocab:numeroMunicipio ;
+        rml:reference "NUMERO_MUNICIPIO" ;
+        rr:datatype xsd:integer
+    ] ;
+    rr:predicateObjectMap [
         rr:predicate vocab:codigoMagnitud ;
         rml:reference "MAGNITUD" ;
         rr:datatype xsd:integer
     ] ;
     rr:predicateObjectMap [
-        rr:predicate wd:same_as_wikidata_madrid ;
-        rr:objectMap [ rml:reference "same_as_wikidata_madrid" ]
-    ] ;
-    rr:predicateObjectMap [
-        rr:predicate wd:same_as_wikidata_madrid_landmarks ;
-        rr:objectMap [ rml:reference "same_as_wikidata_madrid_landmarks" ]
+        rr:predicate vocab:same_as_wikidata_madrid_landmarks ;
+        rml:reference "same_as_wikidata_madrid_landmarks" ;
+        rr:datatype xsd:string
     ] .
 
 <#TriplesMap2> a rr:TriplesMap ;
     rml:logicalSource [
-        rml:source "horario.csv" ;
+        rml:source "horario-csv-updated-with-links.csv" ;
         rml:referenceFormulation ql:CSV
     ] ;
     rr:subjectMap [
@@ -68,7 +70,7 @@
 
 <#TriplesMap3> a rr:TriplesMap ;
     rml:logicalSource [
-        rml:source "horario.csv" ;
+        rml:source "horario-csv-updated-with-links.csv" ;
         rml:referenceFormulation ql:CSV
     ] ;
     rr:subjectMap [
@@ -336,7 +338,7 @@
 
 <#TriplesMap4> a rr:TriplesMap ;
     rml:logicalSource [
-        rml:source "horario.csv" ;
+        rml:source "horario-csv-updated-with-links.csv" ;
         rml:referenceFormulation ql:CSV
     ] ;
     rr:subjectMap [
