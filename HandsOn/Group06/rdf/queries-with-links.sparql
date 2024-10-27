@@ -1,5 +1,4 @@
 # 1. Retrieve All Residuo Instances with Linked Months on DBpedia
-
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT ?residuo ?residuoNombre ?dbpediaMonth
@@ -12,7 +11,6 @@ WHERE {
 
 
 # 2. List Residuo Instances Grouped by District, and Month from dbpedia
-
 PREFIX ex: <http://example.com/resource/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX dbr: <http://dbpedia.org/resource/>
@@ -29,7 +27,6 @@ ORDER BY ?district ?dbpediaMonth
 
 
 # 3. Find Residuo Instances with Missing DBpedia Links for District (Should return nothing)
-
 PREFIX ex: <http://example.com/resource/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
