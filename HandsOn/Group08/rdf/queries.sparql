@@ -1,64 +1,53 @@
-PREFIX owl: http://www.w3.org/2002/07/owl
-PREFIX rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns
-PREFIX rdfs: http://www.w3.org/2000/01/rdf-schema
-PREFIX parking: http://example.com/parking/
+PREFIX ns1: <http://example.com/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-#Consulta que devuelve una lista de barrios y los distritos correspondientes
+# Consulta que devuelve una lista de barrios y los distritos correspondientes
 SELECT ?neighbourhood ?district
 WHERE {
-    ?parking a <http://example.com/parking/aparcamiento> ;
-             <http://example.com/parking/NEIGHBOURHOOD> ?neighbourhood ;
-             <http://example.com/parking/DISTRICT> ?district .
+    ?parking ns1:neighbourhood ?neighbourhood ;
+             ns1:district ?district .
 }
 
-
-#Consulta para obtener todas las calles y sus numeros
+# Consulta para obtener todas las calles y sus números
 SELECT ?street_name ?street_number
 WHERE {
-    ?parking a <http://example.com/parking/aparcamiento> ;
-             <http://example.com/parking/STREET_NAME> ?street_name ;
-             <http://example.com/parking/STRET_NUMBER> ?street_number .
+    ?parking ns1:street_name ?street_name ;
+             ns1:street_number ?street_number .
 }
 
-
-#Consulta para obtener todos los aparcamientos en un barrio especifico (ejemplo: "Recoletos")
+# Consulta para obtener todos los aparcamientos en un barrio específico (ejemplo: "Recoletos")
 SELECT ?parking ?name ?vehicle_type ?total_slots
 WHERE {
-    ?parking a <http://example.com/parking/aparcamiento> ;
-             <http://example.com/parking/NEIGHBOURHOOD> ?neighbourhood ;
-             <http://example.com/parking/NAME> ?name ;
-             <http://example.com/parking/VEHICLE_TYPE> ?vehicle_type ;
-             <http://example.com/parking/TOTAL_SLOTS> ?total_slots .
+    ?parking ns1:neighbourhood ?neighbourhood ;
+             ns1:name ?name ;
+             ns1:vehicle_type ?vehicle_type ;
+             ns1:total_slots ?total_slots .
     FILTER(?neighbourhood = "Recoletos")
 }
 
-
-#Consulta para contar cuantos aparcamientos hay en cada distrito
+# Consulta para contar cuántos aparcamientos hay en cada distrito
 SELECT ?district (COUNT(?parking) AS ?num_aparcamientos)
 WHERE {
-    ?parking a <http://example.com/parking/aparcamiento> ;
-             <http://example.com/parking/DISTRICT> ?district .
+    ?parking ns1:district ?district .
 }
 GROUP BY ?district
 
-
-#Consulta para obtener aparcamientos con un horario especifico (ejemplo: "24 hour")
+# Consulta para obtener aparcamientos con un horario específico (ejemplo: "24 hour")
 SELECT ?parking ?name ?schedule
 WHERE {
-    ?parking a <http://example.com/parking/aparcamiento> ;
-             <http://example.com/parking/SCHEDULE> ?schedule ;
-             <http://example.com/parking/NAME> ?name .
+    ?parking ns1:schedule ?schedule ;
+             ns1:name ?name .
     FILTER(?schedule = "24 hour")
 }
 
-
-#Consulta para obtener aparcamientos en un distrito especifico (ejemplo: "Centro")
+# Consulta para obtener aparcamientos en un distrito específico (ejemplo: "Centro")
 SELECT ?parking ?name ?neighbourhood ?vehicle_type
 WHERE {
-    ?parking a <http://example.com/parking/aparcamiento> ;
-             <http://example.com/parking/DISTRICT> ?district ;
-             <http://example.com/parking/NAME> ?name ;
-             <http://example.com/parking/NEIGHBOURHOOD> ?neighbourhood ;
-             <http://example.com/parking/VEHICLE_TYPE> ?vehicle_type .
+    ?parking ns1:district ?district ;
+             ns1:name ?name ;
+             ns1:neighbourhood ?neighbourhood ;
+             ns1:vehicle_type ?vehicle_type .
     FILTER(?district = "Centro")
 }
