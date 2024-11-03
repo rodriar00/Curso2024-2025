@@ -53,7 +53,9 @@ mappings:
     s: ex:/Vehiculo/$(num_expediente)/$(num_expediente_secuencial)/$(tipo_vehiculo)
     po:
       - [a, ex:Vehiculo]
+      - [a, schema:Vehicle]
       - [ex:tipoVehiculo, $(tipo_vehiculo), xsd:string]
+      - [schema:vehicleType, $(tipo_vehiculo), xsd:string]
       - [ex:same_as_wikidata_tipo_vehiculo, $(same_as_wikidata_tipo_vehiculo)~iri]
       - [ex:estaEnAccidente, ex:/Accidente/$(num_expediente)~iri]
       - p: ex:vehiculoDe
