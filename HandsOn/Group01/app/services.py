@@ -19,74 +19,99 @@ def main_query(request):
     droga = request.form.get("droga", "None")
 
     query = """
-        SELECT ?x ?y ?num_expediente ?fecha ?tipo_accidente
+        SELECT ?x ?y ?num_expediente
         WHERE {
             ?accident a <http://smartcity.linkeddata.es/accidentes/ontologia/Accidente> ;
                     <http://smartcity.linkeddata.es/accidentes/ontologia/num_expediente> ?num_expediente ;
                     <http://smartcity.linkeddata.es/accidentes/ontologia/coordenada_x_utm> ?x ;
                     <http://smartcity.linkeddata.es/accidentes/ontologia/coordenada_y_utm> ?y .
-            
-            OPTIONAL { 
-                ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/estaEnDistrito> ?distrito .
-                OPTIONAL { ?distrito <http://smartcity.linkeddata.es/accidentes/ontologia/distrito> ?distrito_nombre }
-            }
-            OPTIONAL { ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/fecha> ?fecha }
-            OPTIONAL { ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/tipo_accidente> ?tipo_accidente }
-            OPTIONAL { ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/estado_meteorologico> ?estado }
-            
-            OPTIONAL {
-                ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/personaInvolucrada> ?persona .
-                OPTIONAL { ?persona <http://smartcity.linkeddata.es/accidentes/ontologia/tipo_vehiculo> ?tipo_vehiculo }
-                OPTIONAL { ?persona <http://smartcity.linkeddata.es/accidentes/ontologia/min_edad> ?min_edad }
-                OPTIONAL { ?persona <http://smartcity.linkeddata.es/accidentes/ontologia/max_edad> ?max_edad }
-                OPTIONAL { 
-                    ?persona <http://smartcity.linkeddata.es/accidentes/ontologia/tieneLesion> ?lesion .
-                    OPTIONAL { ?lesion <http://smartcity.linkeddata.es/accidentes/ontologia/lesividad> ?lesividad_nombre }
-                }
-                OPTIONAL { ?persona <http://smartcity.linkeddata.es/accidentes/ontologia/positiva_alcohol> ?alcohol }
-                OPTIONAL { ?persona <http://smartcity.linkeddata.es/accidentes/ontologia/positiva_droga> ?droga }
-            }
     """
 
-    filter = ""
+    filters = []
 
+    # Add distrito-related clauses if needed
     if distrito != "None":
-        filter += f'?distrito_nombre = "{distrito}" && '
+        query += """
+            ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/estaEnDistrito> ?distrito .
+            ?distrito <http://smartcity.linkeddata.es/accidentes/ontologia/distrito> ?distrito_nombre .
+        """
+        filters.append(f'?distrito_nombre = "{distrito}"')
 
-    if fecha_desde != "":
-        filter += f'?fecha >= "{fecha_desde}"^^xsd:date && '
+    # Add fecha if date filters exist
+    if fecha_desde != "" or fecha_hasta != "":
+        query += """
+            ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/fecha> ?fecha .
+        """
+        if fecha_desde != "":
+            filters.append(f'?fecha >= "{fecha_desde}"^^xsd:date')
+        if fecha_hasta != "":
+            filters.append(f'?fecha <= "{fecha_hasta}"^^xsd:date')
 
-    if fecha_hasta != "":
-        filter += f'?fecha <= "{fecha_hasta}"^^xsd:date && '
-
+    # Add tipo_accidente if needed
     if tipo_accidente != "None":
-        filter += f'?tipo_accidente = "{tipo_accidente}" && '
+        query += """
+            ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/tipo_accidente> ?tipo_accidente .
+        """
+        filters.append(f'?tipo_accidente = "{tipo_accidente}"')
 
-    if tipo_vehiculo != "None":
-        filter += f'?tipo_vehiculo = "{tipo_vehiculo}" && '
-
-    if edad_min != "":
-        filter += f"?min_edad >= {edad_min} && "
-
-    if edad_max != "":
-        filter += f"?max_edad <= {edad_max} && "
-
-    if lesividad != "None":
-        filter += f'?lesividad_nombre = "{lesividad}" && '
-
+    # Add estado_meteorologico if needed
     if estado_metereologico != "None":
-        filter += f'?estado = "{estado_metereologico}" && '
+        query += """
+            ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/estado_meteorologico> ?estado .
+        """
+        filters.append(f'?estado = "{estado_metereologico}"')
 
-    if alcohol != "None":
-        filter += f"?alcohol = {alcohol} && "
+    # Add persona-related clauses only if any persona filter is active
+    if any(x != "None" and x != "" for x in 
+           [tipo_vehiculo, edad_min, edad_max, lesividad, alcohol, droga]):
 
-    if droga != "None":
-        filter += f"?droga = {droga} && "
+        query += """
+            ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/personaInvolucrada> ?persona .
+        """
 
-    if filter != "":
-        query = query + "FILTER(" + filter[:-4] + ")}"
-    else:
-        query = query + "}"
+        if tipo_vehiculo != "None":
+            query += """
+                ?persona <http://smartcity.linkeddata.es/accidentes/ontologia/tipo_vehiculo> ?tipo_vehiculo .
+            """
+            filters.append(f'?tipo_vehiculo = "{tipo_vehiculo}"')
+
+        if edad_min != "" or edad_max != "":
+            if edad_min != "":
+                query += """
+                    ?persona <http://smartcity.linkeddata.es/accidentes/ontologia/min_edad> ?min_edad .
+                """
+                filters.append(f"?min_edad >= {edad_min}")
+            if edad_max != "":
+                query += """
+                    ?persona <http://smartcity.linkeddata.es/accidentes/ontologia/max_edad> ?max_edad .
+                """
+                filters.append(f"?max_edad <= {edad_max}")
+
+        if lesividad != "None":
+            query += """
+                ?persona <http://smartcity.linkeddata.es/accidentes/ontologia/tieneLesion> ?lesion .
+                ?lesion <http://smartcity.linkeddata.es/accidentes/ontologia/lesividad> ?lesividad_nombre .
+            """
+            filters.append(f'?lesividad_nombre = "{lesividad}"')
+
+        if alcohol != "None":
+            query += """
+                ?persona <http://smartcity.linkeddata.es/accidentes/ontologia/positiva_alcohol> ?alcohol .
+            """
+            filters.append(f"?alcohol = {alcohol}")
+
+        if droga != "None":
+            query += """
+                ?persona <http://smartcity.linkeddata.es/accidentes/ontologia/positiva_droga> ?droga .
+            """
+            filters.append(f"?droga = {droga}")
+
+    # Add filters if any exist
+    if filters:
+        query += "FILTER(" + " && ".join(filters) + ")"
+
+    query += "}"
+    print(query)
 
     # Prepare and execute the query
     q = prepareQuery(query)

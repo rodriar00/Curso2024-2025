@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-
 import math
 import services
 
@@ -23,7 +22,7 @@ def home():
         if row.num_expediente not in accident_codes:
             latitude, longitude = utmToLatLng(30, float(row.x), float(row.y))
             markers.append(
-                {"lat": latitude, "lon": longitude, "popup": f"{row.num_expediente}, {row.fecha}, {row.tipo_accidente}"}
+                {"lat": latitude, "lon": longitude, "popup": f"{row.num_expediente}"}
             )
             accident_codes.add(row.num_expediente)
 
