@@ -105,12 +105,11 @@ def main_query(request):
         query += "FILTER(" + " && ".join(filters) + ")"
 
     query += "}"
-    print(query)
 
     # Prepare and execute the query
     q = prepareQuery(query)
 
-    return g.query(q)
+    return query, g.query(q)
 
 def get_distritos():
     get_districts_query = prepareQuery(

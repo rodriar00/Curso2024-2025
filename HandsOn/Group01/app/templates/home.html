@@ -167,97 +167,31 @@
         <div class="row mb-4">
             <div class="col-md-6">
                 <div class="row mb-4">
-                    <div class="col-md-6">
+                    <div class="col-md">
                         <div class="card text-center h-100">
                             <div class="card-body">
                                 <div class="display-4 text-primary mb-2">
                                     <i class="fas fa-car-crash"></i>
                                 </div>
-                                <h5 class="card-title">Total Accidentes</h5>
-                                <h3 class="card-text" id="total-accidents">{{ data.total_accidents }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card text-center h-100">
-                            <div class="card-body">
-                                <div class="display-4 text-primary mb-2">
-                                    <i class="fas fa-car-crash"></i>
-                                </div>
-                                <h5 class="card-title">Total Accidentes</h5>
-                                <h3 class="card-text" id="total-accidents">{{ data.total_accidents }}</h3>
+                                <h5 class="card-title">Número de accidentes encontrados</h5>
+                                <h3 class="card-text">{{ data.total_accidents }}</h3>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="card text-center h-100">
-                            <div class="card-body">
+                <div class="row">
+                    <div class="col-md">
+                        <div class="card h-100 sparql-card">
+                            <div class="card-body overflow-y-auto">
                                 <div class="display-4 text-primary mb-2">
                                     <i class="fas fa-car-crash"></i>
                                 </div>
-                                <h5 class="card-title">Total Accidentes</h5>
-                                <h3 class="card-text" id="total-accidents">{{ data.total_accidents }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card text-center h-100">
-                            <div class="card-body">
-                                <div class="display-4 text-primary mb-2">
-                                    <i class="fas fa-car-crash"></i>
-                                </div>
-                                <h5 class="card-title">Total Accidentes</h5>
-                                <h3 class="card-text" id="total-accidents">{{ data.total_accidents }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="card text-center h-100">
-                            <div class="card-body">
-                                <div class="display-4 text-primary mb-2">
-                                    <i class="fas fa-car-crash"></i>
-                                </div>
-                                <h5 class="card-title">Total Accidentes</h5>
-                                <h3 class="card-text" id="total-accidents">{{ data.total_accidents }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card text-center h-100">
-                            <div class="card-body">
-                                <div class="display-4 text-primary mb-2">
-                                    <i class="fas fa-car-crash"></i>
-                                </div>
-                                <h5 class="card-title">Total Accidentes</h5>
-                                <h3 class="card-text" id="total-accidents">{{ data.total_accidents }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <div class="card text-center h-100">
-                            <div class="card-body">
-                                <div class="display-4 text-primary mb-2">
-                                    <i class="fas fa-car-crash"></i>
-                                </div>
-                                <h5 class="card-title">Total Accidentes</h5>
-                                <h3 class="card-text" id="total-accidents">{{ data.total_accidents }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card text-center h-100">
-                            <div class="card-body">
-                                <div class="display-4 text-primary mb-2">
-                                    <i class="fas fa-car-crash"></i>
-                                </div>
-                                <h5 class="card-title">Total Accidentes</h5>
-                                <h3 class="card-text" id="total-accidents">{{ data.total_accidents }}</h3>
+                                <h5 class="card-title text-center">Consulta de SPARQL</h5>
+                                <h3 class="card-text ">
+                                    {% for line in data.query %}
+                                        <p>{{line}}</p>
+                                    {% endfor %}
+                                </h3>
                             </div>
                         </div>
                     </div>
