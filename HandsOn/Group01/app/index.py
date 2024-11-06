@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
+import pandas as pd
 import math
 import services
-
+import time
 distritos = services.get_distritos()
 tipo_accidentes = services.get_type_accident()
 vehiculos = services.get_tipo_vehiculo()
@@ -18,13 +19,17 @@ def home():
     markers = []
     accident_codes = set()
 
+    start_time = time.time()
+
     for row in result:
         if row.num_expediente not in accident_codes:
             latitude, longitude = utmToLatLng(30, float(row.x), float(row.y))
             markers.append(
-                {"lat": latitude, "lon": longitude, "popup": f"{row.num_expediente}"}
+                {"lat": latitude, "lon": longitude, "popup": f"<h3><strong>{row.num_expediente}</strong></h3> <br> <div class='text-center'> {row.fecha} <br> {row.tipo_accidente} <br> {row.estado} <br> <a href='{row.distrito_url}'>{row.distrito_nombre}</a><div/>"}
             )
             accident_codes.add(row.num_expediente)
+
+    print("--- After loop: %s seconds ---" % (time.time() - start_time))
 
     datos = {
         "total_accidents": len(accident_codes),
@@ -35,6 +40,8 @@ def home():
         "lesividades": lesividades,
         "estado_meteorologicos": estado_meteorologicos,
     }
+
+    print("--- Final: %s seconds ---" % (time.time() - start_time))
 
     return render_template("home.html", data=datos)
 

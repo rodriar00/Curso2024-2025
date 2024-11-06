@@ -283,7 +283,7 @@
         var markerCluster = L.markerClusterGroup();
 
         {% for marker in data.markers %}
-            markerCluster.addLayer(L.marker([{{ marker['lat'] }}, {{ marker['lon'] }}]).bindPopup("{{ marker['popup'] }}"));            
+            markerCluster.addLayer(L.marker([{{ marker['lat'] }}, {{ marker['lon'] }}]).bindPopup("{{ marker['popup']|safe }}"));
         {% endfor %}
 
         map.addLayer(markerCluster);

@@ -19,46 +19,40 @@ def main_query(request):
     droga = request.form.get("droga", "None")
 
     query = """
-        SELECT ?x ?y ?num_expediente
+        SELECT ?x ?y ?num_expediente ?tipo_accidente ?fecha ?estado ?distrito_nombre ?distrito_url
         WHERE {
             ?accident a <http://smartcity.linkeddata.es/accidentes/ontologia/Accidente> ;
                     <http://smartcity.linkeddata.es/accidentes/ontologia/num_expediente> ?num_expediente ;
                     <http://smartcity.linkeddata.es/accidentes/ontologia/coordenada_x_utm> ?x ;
                     <http://smartcity.linkeddata.es/accidentes/ontologia/coordenada_y_utm> ?y .
+            
+            ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/estaEnDistrito> ?distrito .
+            ?distrito <http://smartcity.linkeddata.es/accidentes/ontologia/distrito> ?distrito_nombre .
+            ?distrito <http://www.w3.org/2002/07/owl#sameAs> ?distrito_url .
+
+            OPTIONAL { ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/tipo_accidente> ?tipo_accidente }
+            OPTIONAL { ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/fecha> ?fecha }
+            OPTIONAL { ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/estado_meteorologico> ?estado }
     """
 
     filters = []
 
     # Add distrito-related clauses if needed
     if distrito != "None":
-        query += """
-            ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/estaEnDistrito> ?distrito .
-            ?distrito <http://smartcity.linkeddata.es/accidentes/ontologia/distrito> ?distrito_nombre .
-        """
         filters.append(f'?distrito_nombre = "{distrito}"')
 
     # Add fecha if date filters exist
-    if fecha_desde != "" or fecha_hasta != "":
-        query += """
-            ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/fecha> ?fecha .
-        """
-        if fecha_desde != "":
-            filters.append(f'?fecha >= "{fecha_desde}"^^xsd:date')
-        if fecha_hasta != "":
-            filters.append(f'?fecha <= "{fecha_hasta}"^^xsd:date')
+    if fecha_desde != "":
+        filters.append(f'?fecha >= "{fecha_desde}"^^xsd:date')
+    if fecha_hasta != "":
+        filters.append(f'?fecha <= "{fecha_hasta}"^^xsd:date')
 
     # Add tipo_accidente if needed
     if tipo_accidente != "None":
-        query += """
-            ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/tipo_accidente> ?tipo_accidente .
-        """
         filters.append(f'?tipo_accidente = "{tipo_accidente}"')
 
     # Add estado_meteorologico if needed
     if estado_metereologico != "None":
-        query += """
-            ?accident <http://smartcity.linkeddata.es/accidentes/ontologia/estado_meteorologico> ?estado .
-        """
         filters.append(f'?estado = "{estado_metereologico}"')
 
     # Add persona-related clauses only if any persona filter is active
