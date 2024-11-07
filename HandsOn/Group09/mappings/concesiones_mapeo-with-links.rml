@@ -9,7 +9,7 @@
 # TriplesMap 1: Concesion
 <http://smartcity.linkeddata.es/concesiones_zonas_verdes/mapeo/TriplesMap1> a rr:TriplesMap;
     rml:logicalSource [
-        rml:source "./csv/ConcesionesYAutorizaciones_2023-updated.csv";
+        rml:source "./csv/ConcesionesYAutorizaciones-updated-with-links.csv";
         rml:referenceFormulation ql:CSV 
     ];
     rr:subjectMap [
@@ -45,7 +45,7 @@
 # TriplesMap 2: Distrito
 <http://smartcity.linkeddata.es/concesiones_zonas_verdes/mapeo/TriplesMap2> a rr:TriplesMap;
     rml:logicalSource [
-        rml:source "./csv/ConcesionesYAutorizaciones_2023-updated.csv";
+        rml:source "./csv/ConcesionesYAutorizaciones-updated-with-links.csv";
         rml:referenceFormulation ql:CSV 
     ];
     rr:subjectMap [
@@ -72,7 +72,7 @@
 # TriplesMap 3: Apartado
 <http://smartcity.linkeddata.es/concesiones_zonas_verdes/mapeo/TriplesMap3> a rr:TriplesMap;
     rml:logicalSource [
-        rml:source "./csv/ConcesionesYAutorizaciones_2023-updated.csv";
+        rml:source "./csv/ConcesionesYAutorizaciones-updated-with-links.csv";
         rml:referenceFormulation ql:CSV 
     ];
     rr:subjectMap [
@@ -90,7 +90,7 @@
 # TriplesMap 4: Denominacion
 <http://smartcity.linkeddata.es/concesiones_zonas_verdes/mapeo/TriplesMap4> a rr:TriplesMap;
     rml:logicalSource [
-        rml:source "./csv/ConcesionesYAutorizaciones_2023-updated.csv";
+        rml:source "./csv/ConcesionesYAutorizaciones-updated-with-links.csv";
         rml:referenceFormulation ql:CSV 
     ];
     rr:subjectMap [
