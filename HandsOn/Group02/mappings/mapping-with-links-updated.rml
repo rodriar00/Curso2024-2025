@@ -4,15 +4,26 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix samur: <http://samur.linkeddata.madrid.es/ontology#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
 
 <http://samur.linkeddata.madrid.es/TriplesMapActivation> a rr:TriplesMap;
   rml:logicalSource [
     rml:source "../csv/activaciones_samur_2023-updated-with-links.csv";
     rml:referenceFormulation ql:CSV
   ];
+  
   rr:subjectMap [
     rr:template "http://samur.linkeddata.madrid.es/activation/{ID}";
     rr:class samur:Activation
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "ID";
+      rr:datatype xsd:string
+    ]
   ];
 
   rr:predicateObjectMap [
@@ -80,7 +91,7 @@
   ];
 
   rr:predicateObjectMap [
-    rr:predicate owl:sameAs;  # Añadimos owl:sameAs para el hospital
+    rr:predicate owl:sameAs;
     rr:objectMap [
       rml:reference "hospital_wikidata_id";
       rr:termType rr:IRI
@@ -92,15 +103,28 @@
     rml:source "../csv/activaciones_samur_2023-updated-with-links.csv";
     rml:referenceFormulation ql:CSV
   ];
+  
   rr:subjectMap [
-        rr:template "http://samur.linkeddata.madrid.es/location/{Distrito}";
-        rr:class samur:Location;
-    ];
+    rr:template "http://samur.linkeddata.madrid.es/location/{Distrito}";
+    rr:class samur:Location
+  ];
 
-    rr:predicateObjectMap [
-        rr:predicate rdf:type;
-        rr:object samur:Location;
-    ].
+  rr:predicateObjectMap [
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "Distrito";
+      rr:datatype xsd:string
+    ]
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate owl:sameAs;
+    rr:objectMap [
+      rml:reference "district_wikidata_id";
+      rr:termType rr:IRI
+    ]
+  ].
+
 
 <http://samur.linkeddata.madrid.es/TriplesMapHospital> a rr:TriplesMap;
   rml:logicalSource [
@@ -109,19 +133,22 @@
   ];
 
   rr:subjectMap [
-        rr:template "http://samur.linkeddata.madrid.es/hospital/{Hospital}";
-        rr:class schema:Hospital;
-    ];
+    rr:template "http://samur.linkeddata.madrid.es/hospital/{Hospital}";
+    rr:class schema:Hospital
+  ];
 
   rr:predicateObjectMap [
-        rr:predicate rdf:type;
-        rr:object schema:Hospital;
-    ]; 
+    rr:predicate rdfs:label;
+    rr:objectMap [
+      rml:reference "Hospital";
+      rr:datatype xsd:string
+    ]
+  ];
 
   rr:predicateObjectMap [
-        rr:predicate schema:name;
-        rr:objectMap [
-            rml:reference "Hospital";
-            rr:datatype xsd:string
-          ]
-     ].
+    rr:predicate owl:sameAs;
+    rr:objectMap [
+      rml:reference "hospital_wikidata_id";
+      rr:termType rr:IRI
+    ]
+  ].
