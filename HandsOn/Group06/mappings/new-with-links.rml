@@ -19,7 +19,7 @@
 
     rr:predicateObjectMap [
         rr:predicate ex:residuoNombre ;
-        rr:objectMap [ rml:reference "Residuo" ]
+        rr:objectMap [ rr:template "http://example.com/resource/{Residuo}" ]
     ];
 
     rr:predicateObjectMap [
@@ -36,12 +36,12 @@
 
     rr:predicateObjectMap [
         rr:predicate ex:lote ;
-        rr:objectMap [ rml:reference "Lote" ]
+        rr:objectMap [ rr:template "http://example.com/resource/{Lote}" ]
     ];
 
     rr:predicateObjectMap [
         rr:predicate ex:anio ;
-        rr:objectMap [ rml:reference "Año" ]
+        rr:objectMap [ rr:template "http://example.com/resource/{Año}" ]
     ];
 
     rr:predicateObjectMap [
@@ -51,36 +51,36 @@
         ]
     ].
 
-    # Mapping for the unique month resource and linking to DBpedia
-    <http://example.com/mapping/MonthMapping>
-        rml:logicalSource [
-            rml:source "dataset-with-links.csv" ;
-            rml:referenceFormulation ql:CSV
-        ];
+# Mapping for the unique month resource and linking to DBpedia
+<http://example.com/mapping/MonthMapping>
+    rml:logicalSource [
+        rml:source "dataset-with-links.csv" ;
+        rml:referenceFormulation ql:CSV
+    ];
 
-        rr:subjectMap [
-            rr:template "http://example.com/month/{Mes}" ;
-            rr:class ex:Month
-        ];
+    rr:subjectMap [
+        rr:template "http://example.com/month/{Mes}" ;
+        rr:class ex:Month
+    ];
 
-        rr:predicateObjectMap [
-            rr:predicate owl:sameAs ;
-            rr:objectMap [ rr:template "http://dbpedia.org/resource/{Mes}" ]
-        ].
+    rr:predicateObjectMap [
+        rr:predicate owl:sameAs ;
+        rr:objectMap [ rml:reference "same_as_wikidata_month" ]
+    ].
 
-    # Mapping for the unique district resource and linking to DBpedia
-    <http://example.com/mapping/DistrictMapping>
-        rml:logicalSource [
-            rml:source "dataset-with-links.csv" ;
-            rml:referenceFormulation ql:CSV
-        ];
+# Mapping for the unique district resource and linking to DBpedia
+<http://example.com/mapping/DistrictMapping>
+    rml:logicalSource [
+        rml:source "dataset-with-links.csv" ;
+        rml:referenceFormulation ql:CSV
+    ];
 
-        rr:subjectMap [
-            rr:template "http://example.com/district/{Nombre distrito}" ;
-            rr:class ex:District
-        ];
+    rr:subjectMap [
+        rr:template "http://example.com/district/{Nombre distrito}" ;
+        rr:class ex:District
+    ];
 
-        rr:predicateObjectMap [
-            rr:predicate owl:sameAs ;
-            rr:objectMap [ rr:template "http://dbpedia.org/resource/{Nombre distrito}" ]
-        ].
+    rr:predicateObjectMap [
+        rr:predicate owl:sameAs ;
+        rr:objectMap [ rml:reference "same_as_wikidata_distrito" ]
+    ].
